@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DC JUICES — Menú</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{ --rojo:#e0222e; --rojo-osc:#b91720; --negro:#0b0b0b; --blanco:#ffffff; --borde:#232323; --gris:#cfcfcf; }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--negro);color:var(--blanco);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif}
+    a{color:var(--blanco);text-decoration:none}
+
+    header{position:sticky;top:0;z-index:50;background:rgba(11,11,11,.85);backdrop-filter:blur(6px);border-bottom:1px solid #1d1d1d}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--rojo)}
+    .brand h1{font-family:"Bebas Neue";letter-spacing:.06em;font-size:38px;margin:0;line-height:1;color:var(--rojo)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;font-weight:700;border:1px solid #262626;background:#151515;color:var(--blanco);cursor:pointer}
+    .btn.primary{background:var(--rojo);border-color:var(--rojo);color:#fff}
+    .btn.primary:hover{background:var(--rojo-osc)}
+    .cart-count{display:inline-flex;min-width:22px;justify-content:center;align-items:center;background:var(--rojo);color:#fff;border-radius:999px;padding:2px 6px;font-size:12px;margin-left:6px}
+
+    .hero .inner{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;padding:36px 0}
+    @media (max-width:900px){.hero .inner{grid-template-columns:1fr}}
+    .hero-copy h2{font-family:"Bebas Neue";font-size:54px;line-height:1;margin:0 0 8px;color:var(--rojo)}
+    .hero-copy p{margin:0 0 18px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+    .tag{border:1px dashed var(--blanco);padding:6px 10px;border-radius:999px;font-size:12px;color:var(--blanco)}
+    .marquee{white-space:nowrap;overflow:hidden;border-top:1px solid #1f1f1f;border-bottom:1px solid #1f1f1f;margin-top:18px}
+    .marquee span{display:inline-block;padding:10px 0;animation:slide 18s linear infinite}
+    @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .card-photo{border:2px solid var(--rojo);border-radius:18px;overflow:hidden;box-shadow:0 10px 40px rgba(224,34,46,.25)}
+    .card-photo img{width:100%;height:100%;display:block;object-fit:cover}
+
+    .tabs{margin:22px 0 10px;display:flex;gap:10px;flex-wrap:wrap}
+    .tab{padding:10px 14px;border-radius:999px;border:1px solid #2a2a2a;background:#222;color:var(--blanco);cursor:pointer;font-weight:700}
+    .tab.active{background:var(--rojo);border-color:var(--rojo);color:#fff}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:650px){.grid{grid-template-columns:1fr}}
+    .item{position:relative;border:1px solid var(--borde);border-radius:16px;overflow:hidden;background:#0f0f0f}
+    .item .ph{height:160px;overflow:hidden;background:#0d0d0d}
+    .item .ph img{width:100%;height:160px;object-fit:cover;display:block}
+    .item .info{padding:14px}
+    .item h3{margin:0;font-size:20px;letter-spacing:.02em;color:var(--rojo)}
+    .desc{font-size:13px;margin:6px 0 12px}
+    .controls{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+    .chip{padding:6px 10px;border-radius:999px;border:1px solid var(--borde);background:#121212;font-weight:700;color:var(--blanco);cursor:pointer}
+    .chip.sel{background:var(--rojo);border-color:var(--rojo);color:#fff}
+    .qty{display:inline-flex;align-items:center;border:1px solid var(--borde);border-radius:10px;overflow:hidden}
+    .qty button{background:#151515;border:none;color:#fff;width:28px;height:28px;font-weight:800;cursor:pointer}
+    .qty input{width:42px;text-align:center;background:#0f0f0f;border:none;color:#fff;font-weight:700}
+    .price{font-weight:800;color:var(--rojo);margin-left:auto}
+    .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .pill{position:absolute;top:10px;left:10px;background:rgba(224,34,46,.95);color:white;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800}
+
+    .dock{position:sticky;bottom:0;background:linear-gradient(180deg,rgba(11,11,11,0),rgba(11,11,11,.95));padding:14px 0;margin-top:18px;border-top:1px solid #1f1f1f}
+    .dock .bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .dock .bar a{border-radius:999px;padding:12px 16px;font-weight:800}
+    footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e6e6e6;font-size:14px}
+
+    .cart{position:fixed;top:0;right:0;height:100dvh;width:360px;max-width:95vw;background:#0f0f0f;border-left:1px solid #1f1f1f;transform:translateX(100%);transition:.3s;z-index:60;display:flex;flex-direction:column}
+    .cart.open{transform:translateX(0)}
+    .cart-h{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #1f1f1f;background:#111}
+    .cart-b{flex:1;overflow:auto;padding:10px 12px;display:flex;flex-direction:column;gap:10px}
+    .cart-i{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;border:1px solid var(--borde);border-radius:12px;padding:8px;background:#121212}
+    .cart-i img{width:56px;height:56px;object-fit:cover;border-radius:8px}
+    .cart-i h4{margin:0;color:var(--rojo);font-size:14px}
+    .cart-i p{margin:2px 0 0 0;font-size:12px}
+    .cart-f{border-top:1px solid #1f1f1f;padding:12px}
+    .cart-f .row{justify-content:space-between}
+    .cart-empty{opacity:.8;text-align:center;padding:20px 0}
+    .del{background:none;border:none;color:#fff;opacity:.8;cursor:pointer}
+    .cart-btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;width:100%;padding:12px 14px;border-radius:10px;font-weight:800;border:1px solid transparent}
+    .cart-btn.wapp{background:var(--rojo);border-color:var(--rojo);color:#fff}
+    .cart-btn.ghost{background:#151515;border-color:#2b2b2b;color:#fff}
+
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:70}
+    .modal.open{display:flex}
+    .modal-card{width:min(560px,92vw);background:#0f0f0f;border:1px solid #262626;border-radius:14px;padding:16px}
+    .modal-card h3{margin:0 0 12px;color:var(--rojo)}
+    .form{display:grid;gap:10px}
+    .field{display:grid;gap:6px}
+    .label{font-size:13px;opacity:.9}
+    .input, .textarea{background:#111;border:1px solid #2b2b2b;border-radius:10px;padding:10px;color:var(--blanco)}
+    .textarea{min-height:72px;resize:vertical}
+    .row-end{display:flex;gap:10px;justify-content:flex-end;margin-top:8px}
+    .note{font-size:12px;opacity:.8}
+    .ok{color:#77d977}
+    .warn{color:#ffd36e}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <img src="logo.png" alt="DC JUICES" onerror="this.src='logo.png'"/>
+        <h1>DC JUICES</h1>
+      </div>
+      <div class="actions">
+        <a class="btn" href="https://www.instagram.com/dc.juices" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn" href="https://www.tiktok.com/@dc.juices" target="_blank" rel="noopener">TikTok</a>
+        <a class="btn" href="https://maps.app.goo.gl/eZRJsZCi2iLdFd2P7" target="_blank" rel="noopener">Maps</a>
+        <a class="btn primary" href="https://wa.me/573022771151?text=Hola%2C%20vengo%20del%20men%C3%BA%20DC%20JUICES%20y%20quiero%20pedir%3A%20" target="_blank" rel="noopener">WhatsApp</a>
+        <button id="btnCart" class="btn">🛒 Carrito <span id="cartCount" class="cart-count">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="inner">
+        <div class="hero-copy">
+          <h2>Jugos Refrescantes con Fruta Natural</h2>
+          <p>Hechos al momento con fruta real. Con todos los power papito lindo — el mix perfecto para no fallar.</p>
+          <div class="tags">
+            <span class="tag">Saludable</span><span class="tag">Refrescante</span>
+            <span class="tag">Naturales</span><span class="tag">Hecho en Medellín</span>
+          </div>
+          <div class="marquee">
+            <span>🍓 🍍 🍊 🍌 🍎 🍉 🍇 🍑 🍒 🍐 🚲 🍓 🍍 🍊 🍌 🍎 🍉 🍇 🍑 🍒 🍐 🚲 ✦ 🍓 🍍 🍊 🍌 🍎 🍉 🍇 🍑 🍒 🍐 🚲</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="card-photo"><img src="images/mango.png" alt="Jugos DC" onerror="this.src='logo.png'"/></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABS -->
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-tab="especiales">Especiales</button>
+      <button class="tab" data-tab="jugos">Jugos</button>
+      <button class="tab" data-tab="extras">Extras</button>
+      <button class="tab" data-tab="postres">Postres</button>
+    </div>
+
+    <!-- ===== ESPECIALES ===== -->
+    <section class="grid tab-pane" id="especiales">
+      <!-- Borrachonto 175 (16/32) -->
+      <article class="item" data-id="borrachonto-175" data-name="Borrachonto 175" data-type="sizes"
+        data-price-16="15000" data-price-32="25000">
+        <span class="pill">Más vendido</span>
+        <div class="ph"><img src="images/borrachonto-175.png" alt="Borrachonto 175" onerror="this.src='logo.png'"></div>
+        <div class="info">
+          <h3>Borrachonto 175</h3>
+          <p class="desc">Borojó, chontaduro, Vita Fer, ginseng, cola granulada, miel, vino Sansón, vitacerebrina</p>
+          <div class="controls">
+            <span class="chip sel" data-size="16oz">16oz</span>
+            <span class="chip" data-size="32oz">32oz</span>
+          </div>
+          <div class="row">
+            <div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div>
+            <div class="price"></div><button class="btn primary add">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Hágalo con fé (16/32) -->
+      <article class="item" data-id="hagalo-con-fe" data-name="Hágalo con fé" data-type="sizes"
+        data-price-16="15000" data-price-32="25000">
+        <div class="ph"><img src="logo.png" alt="Hágalo con fé" onerror="this.src='logo.png'"></div>
+        <div class="info">
+          <h3>Hágalo con fé</h3>
+          <p class="desc">Naranja, Milo, lechera, ginseng, Vita Fer, vitacerebrina</p>
+          <div class="controls">
+            <span class="chip sel" data-size="16oz">16oz</span>
+            <span class="chip" data-size="32oz">32oz</span>
+          </div>
+          <div class="row">
+            <div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div>
+            <div class="price"></div><button class="btn primary add">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ensalada de frutas (16/32) -->
+      <article class="item" data-id="ensalada-frutas" data-name="Ensalada de frutas" data-type="sizes"
+        data-price-16="15000" data-price-32="25000">
+        <div class="ph"><img src="logo.png" alt="Ensalada de frutas" onerror="this.src='logo.png'"></div>
+        <div class="info">
+          <h3>Ensalada de frutas</h3>
+          <p class="desc">Granola, kumis o yogurt, fruta picada</p>
+          <div class="controls">
+            <span class="chip sel" data-size="16oz">16oz</span>
+            <span class="chip" data-size="32oz">32oz</span>
+          </div>
+          <div class="row">
+            <div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div>
+            <div class="price"></div><button class="btn primary add">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Batido de banano + proteína (16/32) -->
+      <article class="item" data-id="batido-banano" data-name="Batido de banano + proteína" data-type="sizes"
+        data-price-16="15000" data-price-32="25000">
+        <div class="ph"><img src="logo.png" alt="Batido de banano" onerror="this.src='logo.png'"></div>
+        <div class="info">
+          <h3>Batido de banano + proteína</h3>
+          <p class="desc">Con colágeno y creatina</p>
+          <div class="controls">
+            <span class="chip sel" data-size="16oz">16oz</span>
+            <span class="chip" data-size="32oz">32oz</span>
+          </div>
+          <div class="row">
+            <div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div>
+            <div class="price"></div><button class="btn primary add">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- NUEVO: Batido Verde (16/32) -->
+      <article class="item" data-id="batido-verde" data-name="Batido Verde" data-type="sizes"
+        data-price-16="15000" data-price-32="20000">
+        <div class="ph"><img src="logo.png" alt="Batido Verde" onerror="this.src='logo.png'"></div>
+        <div class="info">
+          <h3>Batido Verde</h3>
+          <p class="desc">Apio, piña, manzana verde, espinaca, perejil, jengibre, pepino y cidra</p>
+          <div class="controls">
+            <span class="chip sel" data-size="16oz">16oz</span>
+            <span class="chip" data-size="32oz">32oz</span>
+          </div>
+          <div class="row">
+            <div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div>
+            <div class="price"></div><button class="btn primary add">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- NUEVO: Batido Rojo (16/32) -->
+      <article class="item" data-id="batido-rojo" data-name="Batido Rojo" data-type="sizes"
+        data-price-16="15000" data-price-32="20000">
+        <div class="ph"><img src="logo.png" alt="Batido Rojo" onerror="this.src='logo.png'"></div>
+        <div class="info">
+          <h3>Batido Rojo</h3>
+          <p class="desc">Mora, fresa, jengibre, remolacha y rábano</p>
+          <div class="controls">
+            <span class="chip sel" data-size="16oz">16oz</span>
+            <span class="chip" data-size="32oz">32oz</span>
+          </div>
+          <div class="row">
+            <div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div>
+            <div class="price"></div><button class="btn primary add">Agregar</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===== JUGOS ===== -->
+    <section class="grid tab-pane" id="jugos" style="display:none">
+      <!-- Naranja: 9/14/16/22/32 (32 = 14.000) -->
+      <article class="item" data-id="naranja" data-name="Jugo de naranja" data-type="naranja"
+        data-price-9="3000" data-price-14="5000" data-price-16="7000" data-price-22="10000" data-price-32="14000">
+        <div class="ph"><img src="images/naranja.png" alt="Naranja" onerror="this.src='logo.png'"></div>
+        <div class="info">
+          <h3>Jugo de naranja</h3>
+          <div class="controls">
+            <span class="chip" data-size="9oz">9oz</span>
+            <span class="chip" data-size="14oz">14oz</span>
+            <span class="chip sel" data-size="16oz">16oz</span>
+            <span class="chip" data-size="22oz">22oz</span>
+            <span class="chip" data-size="32oz">32oz</span>
+          </div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div>
+            <div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+
+      <!-- Plantilla frutas (16/22/32, agua/leche) — 32oz: 18k agua, 20k leche -->
+      <!-- Mango -->
+      <article class="item fruit" data-id="mango" data-name="Mango" data-type="fruit"
+        data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+        data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+        <div class="ph"><img src="images/mango.png" alt="Mango" onerror="this.src='logo.png'"></div>
+        <div class="info"><h3>Mango</h3>
+          <div class="controls">
+            <span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span>
+            <span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span>
+          </div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+
+      <!-- Lulo -->
+      <article class="item fruit" data-id="lulo" data-name="Lulo" data-type="fruit"
+        data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+        data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+        <div class="ph"><img src="images/lulo.png" alt="Lulo" onerror="this.src='logo.png'"></div>
+        <div class="info"><h3>Lulo</h3>
+          <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+
+      <!-- Maracuyá -->
+      <article class="item fruit" data-id="maracuya" data-name="Maracuyá" data-type="fruit"
+        data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+        data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+        <div class="ph"><img src="images/maracuya.png" alt="Maracuyá" onerror="this.src='logo.png'"></div>
+        <div class="info"><h3>Maracuyá</h3>
+          <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+
+      <!-- Piña -->
+      <article class="item fruit" data-id="pina" data-name="Piña" data-type="fruit"
+        data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+        data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+        <div class="ph"><img src="images/pina.png" alt="Piña" onerror="this.src='logo.png'"></div>
+        <div class="info"><h3>Piña</h3>
+          <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+
+      <!-- Mora -->
+      <article class="item fruit" data-id="mora" data-name="Mora" data-type="fruit"
+        data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+        data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+        <div class="ph"><img src="images/mora.png" alt="Mora" onerror="this.src='logo.png'"></div>
+        <div class="info"><h3>Mora</h3>
+          <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+
+      <!-- Guanábana -->
+      <article class="item fruit" data-id="guanabana" data-name="Guanábana" data-type="fruit"
+        data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+        data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+        <div class="ph"><img src="images/guanabana.png" alt="Guanábana" onerror="this.src='logo.png'"></div>
+        <div class="info"><h3>Guanábana</h3>
+          <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+
+      <!-- Fresa -->
+      <article class="item fruit" data-id="fresa" data-name="Fresa" data-type="fruit"
+        data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+        data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+        <div class="ph"><img src="images/fresa.png" alt="Fresa" onerror="this.src='logo.png'"></div>
+        <div class="info"><h3>Fresa</h3>
+          <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+
+      <!-- Mandarina -->
+      <article class="item fruit" data-id="mandarina" data-name="Mandarina" data-type="fruit"
+        data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+        data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+        <div class="ph"><img src="images/mandarina.png" alt="Mandarina" onerror="this.src='logo.png'"></div>
+        <div class="info"><h3>Mandarina</h3>
+          <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+
+      <!-- Tomate de Árbol -->
+      <article class="item fruit" data-id="tomate-arbol" data-name="Tomate de Árbol" data-type="fruit"
+        data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+        data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+        <div class="ph"><img src="images/tomate-de-arbol.png" alt="Tomate de Árbol" onerror="this.src='logo.png'"></div>
+        <div class="info"><h3>Tomate de Árbol</h3>
+          <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===== EXTRAS ===== -->
+    <section class="grid tab-pane" id="extras" style="display:none">
+      <article class="item" data-id="vitaminas" data-name="Vitaminas adicionales" data-type="sizes" data-price-16="3000" data-price-32="3000">
+        <div class="ph"><img src="logo.png" alt="Vitaminas" onerror="this.src='logo.png'"></div>
+        <div class="info"><h3>Vitaminas adicionales</h3>
+          <div class="controls"><span class="chip sel" data-size="16oz">Único</span></div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+      <article class="item" data-id="helado" data-name="Adición de helado" data-type="sizes" data-price-16="3000" data-price-32="3000">
+        <div class="ph"><img src="logo.png" alt="Helado" onerror="this.src='logo.png'"></div>
+        <div class="info"><h3>Adición de helado</h3>
+          <div class="controls"><span class="chip sel" data-size="16oz">Único</span></div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+      <article class="item" data-id="avena" data-name="Adición de avena" data-type="sizes" data-price-16="3000" data-price-32="3000">
+        <div class="ph"><img src="logo.png" alt="Avena" onerror="this.src='logo.png'"></div>
+        <div class="info"><h3>Adición de avena</h3>
+          <div class="controls"><span class="chip sel" data-size="16oz">Único</span></div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+      <article class="item" data-id="cola-miel" data-name="Cola granulada y miel" data-type="sizes" data-price-16="1000" data-price-32="1000">
+        <div class="ph"><img src="logo.png" alt="Cola y miel" onerror="this.src='logo.png'"></div>
+        <div class="info"><h3>Cola granulada y miel</h3>
+          <div class="controls"><span class="chip sel" data-size="16oz">Único</span></div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===== POSTRES ===== -->
+    <section class="grid tab-pane" id="postres" style="display:none">
+      <article class="item" data-id="torta-zanahoria" data-name="Torta de Zanahoria" data-type="sizes" data-price-16="4000" data-price-32="4000">
+        <div class="ph"><img src="logo.png" alt="Torta de Zanahoria" onerror="this.src='logo.png'"></div>
+        <div class="info"><h3>Torta de Zanahoria</h3>
+          <div class="controls"><span class="chip sel" data-size="16oz">Porción</span></div>
+          <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Dock CTA -->
+    <div class="dock">
+      <div class="bar">
+        <a class="btn" href="https://maps.app.goo.gl/eZRJsZCi2iLdFd2P7" target="_blank" rel="noopener">📍 Ver en Google Maps</a>
+        <a class="btn primary" href="https://wa.me/573022771151?text=Hola%2C%20vengo%20del%20men%C3%BA%20DC%20JUICES%20y%20quiero%20pedir%3A%20" target="_blank" rel="noopener">📲 WhatsApp</a>
+      </div>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <p><strong>Horarios:</strong> Lunes a Domingo 9:00 a.m. – 8:00 p.m.</p>
+        <p>Medellín • Síguenos: <a href="https://www.instagram.com/dc.juices" target="_blank" rel="noopener">@dc.juices</a></p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Carrito -->
+  <aside id="cart" class="cart" aria-hidden="true">
+    <div class="cart-h"><strong>🛒 Tu carrito</strong><button id="cartClose" class="del">✕</button></div>
+    <div id="cartBody" class="cart-b"><div class="cart-empty">Tu carrito está vacío.</div></div>
+    <div class="cart-f">
+      <div class="row"><span><strong>Subtotal:</strong></span><span id="cartSubtotal" class="price">$0</span></div>
+      <div style="margin-top:10px;display:grid;gap:8px">
+        <button id="checkout" class="cart-btn wapp">Enviar pedido por WhatsApp</button>
+        <button id="emptyBtn" class="cart-btn ghost">Vaciar carrito</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Modal: Datos de envío -->
+  <div id="checkoutModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <h3>Datos de envío</h3>
+      <div class="form">
+        <div class="field"><label class="label" for="fName">Nombre (opcional)</label><input id="fName" class="input" type="text" placeholder="Tu nombre"></div>
+        <div class="field"><label class="label" for="fAddress">Dirección</label><input id="fAddress" class="input" type="text" placeholder="Calle #, barrio, unidad, torre, apto…"></div>
+        <div class="field"><label class="label" for="fExtra">Indicaciones / referencia</label><textarea id="fExtra" class="textarea" placeholder="Portería, número de entrada, puntos de referencia…"></textarea></div>
+        <div class="field">
+          <button id="btnGeo" class="btn" type="button">📍 Usar mi ubicación actual</button>
+          <div id="geoStatus" class="note"></div>
+        </div>
+        <div class="row-end">
+          <button id="btnCancel" class="btn">Cancelar</button>
+          <button id="btnSend" class="btn primary">Confirmar y abrir WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón WA flotante -->
+  <a class="btn primary" style="position:fixed;right:16px;bottom:16px;border-radius:999px;width:56px;height:56px;display:grid;place-items:center;text-decoration:none" href="https://wa.me/573022771151?text=Hola%2C%20vengo%20del%20men%C3%BA%20DC%20JUICES%20y%20quiero%20pedir%3A%20" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+  <script>
+    const WAPP_NUMBER = "573022771151";
+    const MAPS_LINK = "https://maps.app.goo.gl/eZRJsZCi2iLdFd2P7";
+    const COP = n => (n||0).toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0});
+    const enc = s => encodeURIComponent(s);
+
+    // Tabs
+    const tabs=document.querySelectorAll('.tab');
+    const panes=document.querySelectorAll('.tab-pane');
+    tabs.forEach(t=>t.addEventListener('click',()=>{
+      tabs.forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      const show=t.dataset.tab;
+      panes.forEach(p=>p.style.display = p.id===show? 'grid':'none');
+      window.scrollTo({top:document.querySelector('#'+show).offsetTop-80,behavior:'smooth'});
+    }));
+
+    // Fallback imágenes
+    document.querySelectorAll('img').forEach(img=>img.addEventListener('error',()=>{ img.src='logo.png'; }));
+
+    // ===== Precios: soporta simple, sizes(16/32), naranja y fruit (agua/leche) =====
+    function getCardPrice(card){
+      const type = card.getAttribute('data-type');
+      if(type==='simple'){ return parseInt(card.getAttribute('data-price'))||0; }
+      if(type==='sizes'){
+        const sel = card.querySelector('.chip.sel[data-size]') || card.querySelector('.chip[data-size]');
+        const size = sel ? sel.getAttribute('data-size') : '16oz';
+        return parseInt(card.getAttribute(`data-price-${size.replace('oz','')}`))||0;
+      }
+      if(type==='naranja'){
+        const sel = card.querySelector('.chip.sel[data-size]') || card.querySelector('.chip[data-size]');
+        const size = sel ? sel.getAttribute('data-size') : '16oz';
+        return parseInt(card.getAttribute(`data-price-${size.replace('oz','')}`))||0;
+      }
+      if(type==='fruit'){
+        const s = card.querySelector('.chip.sel[data-size]') || card.querySelector('.chip[data-size]');
+        const v = card.querySelector('.chip.sel[data-variant]') || card.querySelector('.chip[data-variant]');
+        const size = s ? s.getAttribute('data-size') : '16oz';
+        const variant = v ? v.getAttribute('data-variant') : 'agua';
+        return parseInt(card.getAttribute(`data-price-${size.replace('oz','')}-${variant}`))||0;
+      }
+      return 0;
+    }
+    function updateCardPrice(card){ const p = card.querySelector('.price'); if(p) p.textContent = COP(getCardPrice(card)); }
+
+    // Defaults + precio visible
+    document.querySelectorAll('.item').forEach(card=>{
+      const sz = card.querySelector('.chip[data-size].sel') || card.querySelector('.chip[data-size]');
+      if(sz && !sz.classList.contains('sel')) sz.classList.add('sel');
+      const vr = card.querySelector('.chip[data-variant].sel') || card.querySelector('.chip[data-variant]');
+      if(vr && !vr.classList.contains('sel')) vr.classList.add('sel');
+      // Insertar .price si falta
+      if(!card.querySelector('.price')){
+        const row = card.querySelector('.row');
+        const span = document.createElement('div'); span.className='price'; row.insertBefore(span,row.lastElementChild);
+      }
+      updateCardPrice(card);
+    });
+
+    // Cambiar tamaño/variante
+    document.addEventListener('click',(e)=>{
+      if(e.target.classList.contains('chip')){
+        const isSize = e.target.hasAttribute('data-size');
+        const groupSel = isSize ? '[data-size]' : '[data-variant]';
+        const box = e.target.closest('.info');
+        box.querySelectorAll('.chip'+groupSel).forEach(c=>c.classList.remove('sel'));
+        e.target.classList.add('sel');
+        updateCardPrice(e.target.closest('.item'));
+      }
+    });
+
+    // Cantidades +/- en tarjeta
+    document.querySelectorAll('.item').forEach(card=>{
+      const minus=card.querySelector('.qminus'), plus=card.querySelector('.qplus'), input=card.querySelector('.qval');
+      if(minus&&plus&&input){ minus.addEventListener('click',()=>{ input.value=Math.max(1,(+input.value||1)-1); });
+                              plus.addEventListener('click',()=>{ input.value=(+input.value||1)+1; }); }
+    });
+
+    // ===== Carrito =====
+    const cartBtn = document.getElementById('btnCart');
+    const cart = document.getElementById('cart');
+    const cartClose = document.getElementById('cartClose');
+    const cartBody = document.getElementById('cartBody');
+    const cartSubtotal = document.getElementById('cartSubtotal');
+    const cartCount = document.getElementById('cartCount');
+    const emptyBtn = document.getElementById('emptyBtn');
+    const state = { items: [] }; // {id,name,size,variant,qty,unit,img}
+    const keyOf = it => [it.id,it.size||'',it.variant||''].join('|');
+
+    function addToCart(it){ const k=keyOf(it); const f=state.items.find(x=>keyOf(x)===k); if(f){f.qty+=it.qty;} else {state.items.push(it);} renderCart(); }
+    function removeFromCart(k){ const i=state.items.findIndex(x=>keyOf(x)===k); if(i>=0){state.items.splice(i,1); renderCart();} }
+
+    function renderCart(){
+      cartBody.innerHTML='';
+      if(state.items.length===0){ cartBody.innerHTML='<div class="cart-empty">Tu carrito está vacío.</div>'; }
+      else{
+        state.items.forEach(it=>{
+          const line=document.createElement('div'); line.className='cart-i';
+          line.innerHTML=`
+            <img src="${it.img||'logo.png'}" onerror="this.src='logo.png'">
+            <div><h4>${it.name}</h4><p class="mini">${[it.size,it.variant].filter(Boolean).join(' • ')||'Único'}</p>
+            <div class="row" style="margin-top:6px">
+              <div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="${it.qty}" min="1"><button class="qplus">+</button></div>
+              <span class="mini">x ${COP(it.unit)}</span></div></div>
+            <div><div class="price">${COP(it.unit*it.qty)}</div><button class="del" title="Eliminar">🗑</button></div>`;
+          const input=line.querySelector('.qval'), minus=line.querySelector('.qminus'), plus=line.querySelector('.qplus'), del=line.querySelector('.del'); const k=keyOf(it);
+          minus.addEventListener('click',()=>{ input.value=Math.max(1,(+input.value||1)-1); it.qty=+input.value; renderCart(); });
+          plus.addEventListener('click',()=>{ input.value=(+input.value||1)+1; it.qty=+input.value; renderCart(); });
+          input.addEventListener('change',()=>{ it.qty=Math.max(1,(+input.value||1)); renderCart(); });
+          del.addEventListener('click',()=> removeFromCart(k));
+          cartBody.appendChild(line);
+        });
+      }
+      const subtotal = state.items.reduce((s,x)=>s+x.unit*x.qty,0);
+      cartSubtotal.textContent = COP(subtotal);
+      cartCount.textContent = state.items.reduce((s,x)=>s+x.qty,0);
+    }
+
+    cartBtn.addEventListener('click',()=>{ cart.classList.add('open'); cart.setAttribute('aria-hidden','false'); });
+    cartClose.addEventListener('click',()=>{ cart.classList.remove('open'); cart.setAttribute('aria-hidden','true'); });
+    emptyBtn.addEventListener('click',()=>{ state.items=[]; renderCart(); });
+
+    // Agregar desde cards
+    document.querySelectorAll('.item .add').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const card=btn.closest('.item'); const type=card.getAttribute('data-type'); const id=card.getAttribute('data-id');
+        const name=card.getAttribute('data-name')||card.querySelector('h3').textContent.trim(); const img=(card.querySelector('img')||{}).src||'logo.png';
+        const qty=Math.max(1, +(card.querySelector('.qval')?.value||1)); let size=null,variant=null,unit=0;
+
+        if(type==='simple'){
+          unit=parseInt(card.getAttribute('data-price'))||0;
+          size=card.querySelector('.chip[data-size]')?.textContent||'Único';
+        } else if(type==='sizes' || type==='naranja'){
+          const s=card.querySelector('.chip.sel[data-size]')||card.querySelector('.chip[data-size]');
+          size = s ? s.getAttribute('data-size') : '16oz';
+          unit = parseInt(card.getAttribute(`data-price-${size.replace('oz','')}`))||0;
+        } else if(type==='fruit'){
+          const s=card.querySelector('.chip.sel[data-size]')||card.querySelector('.chip[data-size]');
+          const v=card.querySelector('.chip.sel[data-variant]')||card.querySelector('.chip[data-variant]');
+          size = s ? s.getAttribute('data-size') : '16oz';
+          variant = v ? v.getAttribute('data-variant') : 'agua';
+          unit = parseInt(card.getAttribute(`data-price-${size.replace('oz','')}-${variant}`))||0;
+        }
+        addToCart({id,name,size,variant,qty,unit,img});
+        cart.classList.add('open');
+      });
+    });
+
+    // Mostrar precios iniciales
+    document.querySelectorAll('.item').forEach(updateCardPrice);
+
+    // ===== Checkout con formulario + geolocalización =====
+    const checkoutBtn = document.getElementById('checkout');
+    const modal = document.getElementById('checkoutModal');
+    const btnCancel = document.getElementById('btnCancel');
+    const btnSend = document.getElementById('btnSend');
+    const btnGeo = document.getElementById('btnGeo');
+    const geoStatus = document.getElementById('geoStatus');
+    let geoLink = "";
+
+    checkoutBtn.addEventListener('click', ()=>{
+      if(state.items.length===0){ alert('Tu carrito está vacío.'); return; }
+      modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    });
+    btnCancel.addEventListener('click', ()=>{ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); });
+
+    btnGeo.addEventListener('click', ()=>{
+      geoStatus.textContent = "Solicitando permiso de ubicación…";
+      geoStatus.className = "note warn";
+      if(!('geolocation' in navigator)){ geoStatus.textContent = "Este navegador no soporta geolocalización."; return; }
+      navigator.geolocation.getCurrentPosition(
+        (pos)=>{
+          const {latitude, longitude} = pos.coords;
+          geoLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+          geoStatus.innerHTML = `Ubicación detectada ✅ <a href="${geoLink}" target="_blank">ver en mapa</a>`;
+          geoStatus.className = "note ok";
+        },
+        ()=>{ geoStatus.textContent = "No se pudo obtener la ubicación. Activa el GPS o escribe tu dirección."; geoStatus.className = "note warn"; },
+        {enableHighAccuracy:true, timeout:10000}
+      );
+    });
+
+    document.getElementById('btnSend').addEventListener('click', ()=>{
+      const name = document.getElementById('fName').value.trim();
+      const addr = document.getElementById('fAddress').value.trim();
+      const extra = document.getElementById('fExtra').value.trim();
+
+      const subtotal = state.items.reduce((s,x)=>s+x.unit*x.qty,0);
+      const lines = state.items.map(x => `${x.qty} x ${x.name}${x.size? " " + x.size:""}${x.variant? " ("+x.variant+")":""} - ${COP(x.unit*x.qty)}`);
+
+      const infoEnvio = [
+        name ? `Nombre: ${name}` : null,
+        addr ? `Dirección: ${addr}` : null,
+        extra ? `Indicaciones: ${extra}` : null,
+        geoLink ? `Ubicación (GPS): ${geoLink}` : null
+      ].filter(Boolean).join("\n");
+
+      const msg = [
+        "Hola, vengo del menú DC JUICES y quiero pedir:",
+        "",
+        ...lines,
+        "",
+        `Subtotal: ${COP(subtotal)}`,
+        "",
+        "Datos de envío:",
+        infoEnvio || "(sin datos de envío, por favor confirmar por chat)",
+        "",
+        `Sucursal/Referencia: ${MAPS_LINK}`
+      ].join("\n");
+
+      const url = `https://wa.me/${WAPP_NUMBER}?text=${enc(msg)}`;
+      window.open(url, "_blank");
+      modal.classList.remove('open');
+    });
+  </script>
+</body>
+</html>
