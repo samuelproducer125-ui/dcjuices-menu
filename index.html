@@ -9,13 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{ --rojo:#e0222e; --rojo-osc:#b91720; --negro:#0b0b0b; --blanco:#ffffff; --borde:#232323; }
-
 *{box-sizing:border-box}
 html,body{
   margin:0;background:var(--negro);color:var(--blanco);
   font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
-  width:100%; max-width:100%;
-  overflow-x:hidden; /* 🔒 evita desplazamiento horizontal */
+  width:100%;max-width:100%;overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
 }
 a{color:var(--blanco);text-decoration:none}
 img{max-width:100%;height:auto;display:block}
@@ -23,19 +22,22 @@ img{max-width:100%;height:auto;display:block}
 /* Header */
 header{position:sticky;top:0;z-index:1000;background:rgba(11,11,11,.92);backdrop-filter:blur(6px);border-bottom:1px solid #1d1d1d;max-width:100%}
 .wrap{max-width:1100px;margin:0 auto;padding:0 18px;width:100%}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;max-width:100%}
-.brand{display:flex;align-items:center;gap:12px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;max-width:100%;min-width:0}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
 .brand img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--rojo)}
-.brand h1{font-family:"Bebas Neue";letter-spacing:.06em;font-size:38px;margin:0;line-height:1;color:var(--rojo);white-space:nowrap}
-.actions{display:flex;gap:10px;flex-wrap:wrap;max-width:100%}
+.brand h1{font-family:"Bebas Neue";letter-spacing:.06em;font-size:38px;margin:0;line-height:1.1;color:var(--rojo);white-space:nowrap}
+.actions{display:flex;gap:10px;flex-wrap:wrap;max-width:100%;min-width:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:12px;font-weight:700;border:1px solid #262626;background:#151515;color:var(--blanco);cursor:pointer;white-space:nowrap}
 .btn.primary{background:var(--rojo);border-color:var(--rojo);color:#fff}
 .btn.primary:hover{background:var(--rojo-osc)}
 .cart-count{display:inline-flex;min-width:22px;justify-content:center;align-items:center;background:var(--rojo);color:#fff;border-radius:999px;padding:2px 6px;font-size:12px;margin-left:6px}
 
 /* Hero */
-.hero .inner{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;padding:22px 0;max-width:100%}
-.hero-copy h2{font-family:"Bebas Neue";font-size:54px;line-height:1;margin:0 0 8px;color:var(--rojo)}
+.hero .inner{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;padding:22px 0;max-width:100%;min-width:0}
+.hero-copy h2{
+  font-family:"Bebas Neue";font-size:54px;line-height:1.12;margin:4px 0 10px;
+  color:var(--rojo);letter-spacing:.04em;word-break:normal;overflow-wrap:anywhere;text-wrap:balance;
+}
 .hero-copy p{margin:0 0 16px;font-size:16px}
 .tags{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
 .tag{border:1px dashed var(--blanco);padding:8px 12px;border-radius:999px;font-size:13px;color:var(--blanco)}
@@ -62,8 +64,8 @@ header{position:sticky;top:0;z-index:1000;background:rgba(11,11,11,.92);backdrop
 .item{position:relative;border:1px solid var(--borde);border-radius:16px;overflow:hidden;background:#0f0f0f;max-width:100%}
 .item .ph{height:200px;overflow:hidden;background:#0d0d0d}
 .item .ph img{width:100%;height:100%;object-fit:cover}
-.item .info{padding:16px}
-.item h3{margin:0;font-size:20px;letter-spacing:.02em;color:var(--rojo)}
+.item .info{padding:16px;min-width:0}
+.item h3{margin:0;font-size:20px;letter-spacing:.02em;color:var(--rojo);line-height:1.2}
 .desc{font-size:13px;margin:8px 0 12px}
 .controls{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
 .chip{padding:10px 12px;border-radius:999px;border:1px solid var(--borde);background:#121212;font-weight:700;color:var(--blanco);cursor:pointer}
@@ -76,14 +78,11 @@ header{position:sticky;top:0;z-index:1000;background:rgba(11,11,11,.92);backdrop
 .pill{position:absolute;top:10px;left:10px;background:rgba(224,34,46,.95);color:white;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800}
 
 /* ======= RESPONSIVE ======= */
-/* Tablet */
 @media (max-width: 1024px){
   .grid{grid-template-columns:repeat(2,1fr)}
   .hero .inner{grid-template-columns:1fr;gap:16px}
   .item .ph{height:220px}
 }
-
-/* Móvil */
 @media (max-width: 768px){
   .wrap{padding:0 14px}
   .nav{flex-wrap:wrap;gap:8px}
@@ -103,8 +102,6 @@ header{position:sticky;top:0;z-index:1000;background:rgba(11,11,11,.92);backdrop
   .grid{grid-template-columns:1fr;gap:14px}
   .item{border-radius:18px}
   .item .ph{height:260px}
-  .item .info{padding:16px}
-  .item h3{font-size:20px}
   .desc{font-size:14px;opacity:.95}
   .controls{display:none} /* usamos selects en móvil */
   .mobile-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
@@ -114,8 +111,6 @@ header{position:sticky;top:0;z-index:1000;background:rgba(11,11,11,.92);backdrop
   .price{font-size:20px}
   .row .btn.primary{flex:1;padding:14px 16px;font-size:16px;border-radius:14px}
 }
-
-/* Extra pequeño */
 @media (max-width: 380px){
   .item .ph{height:240px}
 }
@@ -127,7 +122,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(11,11,11,.92);backdrop
 footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e6e6e6;font-size:14px}
 
 /* Carrito */
-.cart{position:fixed;top:0;right:0;height:100dvh;width:420px;max-width:100vw;background:#0f0f0f;border-left:1px solid #1f1f1f;transform:translateX(100%);transition:.3s;z-index:1100;display:flex;flex-direction:column;contain:paint;/* evita afectar layout */}
+.cart{position:fixed;top:0;right:0;height:100dvh;width:420px;max-width:100vw;background:#0f0f0f;border-left:1px solid #1f1f1f;transform:translateX(100%);transition:.3s;z-index:1100;display:flex;flex-direction:column;contain:paint}
 .cart.open{transform:translateX(0)}
 .cart-h{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid #1f1f1f;background:#111;font-size:16px}
 .cart-b{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:12px}
@@ -286,6 +281,7 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
 
   <!-- ===== JUGOS ===== -->
   <section class="grid tab-pane" id="jugos" style="display:none">
+    <!-- Naranja -->
     <article class="item" data-id="naranja" data-name="Jugo de naranja" data-type="naranja"
       data-price-9="3000" data-price-14="5000" data-price-16="7000" data-price-22="10000" data-price-32="14000">
       <div class="ph"><img src="images/naranja.png" alt="Naranja" onerror="this.src='logo.png'"></div>
@@ -297,7 +293,7 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
       </div>
     </article>
 
-    <!-- MANGO (plantilla de fruta con Agua/Leche) -->
+    <!-- Mango -->
     <article class="item fruit" data-id="mango" data-name="Mango" data-type="fruit"
       data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
       data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
@@ -309,7 +305,6 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
       </div>
     </article>
 
-    <!-- Repite la misma estructura para lulo, maracuyá, piña, mora, guanábana, fresa, mandarina, tomate de árbol -->
     <!-- Lulo -->
     <article class="item fruit" data-id="lulo" data-name="Lulo" data-type="fruit"
       data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
@@ -321,8 +316,73 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
       </div>
     </article>
 
-    <!-- ... (las demás frutas igual que antes) ... -->
+    <!-- Maracuyá -->
+    <article class="item fruit" data-id="maracuya" data-name="Maracuyá" data-type="fruit"
+      data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+      data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+      <div class="ph"><img src="images/maracuya.png" alt="Maracuyá" onerror="this.src='logo.png'"></div>
+      <div class="info"><h3>Maracuyá</h3>
+        <div class="mobile-controls"><select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option></select><select class="sel sel-variant"><option value="agua" selected>Agua</option><option value="leche">Leche</option></select></div>
+        <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+      </div>
+    </article>
 
+    <!-- Piña -->
+    <article class="item fruit" data-id="pina" data-name="Piña" data-type="fruit"
+      data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+      data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+      <div class="ph"><img src="images/pina.png" alt="Piña" onerror="this.src='logo.png'"></div>
+      <div class="info"><h3>Piña</h3>
+        <div class="mobile-controls"><select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option></select><select class="sel sel-variant"><option value="agua" selected>Agua</option><option value="leche">Leche</option></select></div>
+        <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+      </div>
+    </article>
+
+    <!-- Mora -->
+    <article class="item fruit" data-id="mora" data-name="Mora" data-type="fruit"
+      data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+      data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+      <div class="ph"><img src="images/mora.png" alt="Mora" onerror="this.src='logo.png'"></div>
+      <div class="info"><h3>Mora</h3>
+        <div class="mobile-controls"><select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option></select><select class="sel sel-variant"><option value="agua" selected>Agua</option><option value="leche">Leche</option></select></div>
+        <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+      </div>
+    </article>
+
+    <!-- Guanábana -->
+    <article class="item fruit" data-id="guanabana" data-name="Guanábana" data-type="fruit"
+      data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+      data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+      <div class="ph"><img src="images/guanabana.png" alt="Guanábana" onerror="this.src='logo.png'"></div>
+      <div class="info"><h3>Guanábana</h3>
+        <div class="mobile-controls"><select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option></select><select class="sel sel-variant"><option value="agua" selected>Agua</option><option value="leche">Leche</option></select></div>
+        <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+      </div>
+    </article>
+
+    <!-- Fresa -->
+    <article class="item fruit" data-id="fresa" data-name="Fresa" data-type="fruit"
+      data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+      data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+      <div class="ph"><img src="images/fresa.png" alt="Fresa" onerror="this.src='logo.png'"></div>
+      <div class="info"><h3>Fresa</h3>
+        <div class="mobile-controls"><select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option></select><select class="sel sel-variant"><option value="agua" selected>Agua</option><option value="leche">Leche</option></select></div>
+        <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+      </div>
+    </article>
+
+    <!-- Mandarina -->
+    <article class="item fruit" data-id="mandarina" data-name="Mandarina" data-type="fruit"
+      data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
+      data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
+      <div class="ph"><img src="images/mandarina.png" alt="Mandarina" onerror="this.src='logo.png'"></div>
+      <div class="info"><h3>Mandarina</h3>
+        <div class="mobile-controls"><select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option></select><select class="sel sel-variant"><option value="agua" selected>Agua</option><option value="leche">Leche</option></select></div>
+        <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
+      </div>
+    </article>
+
+    <!-- Tomate de Árbol -->
     <article class="item fruit" data-id="tomate-arbol" data-name="Tomate de Árbol" data-type="fruit"
       data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
       data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
@@ -660,4 +720,3 @@ document.getElementById('btnSend').addEventListener('click', ()=>{
 </script>
 </body>
 </html>
-
