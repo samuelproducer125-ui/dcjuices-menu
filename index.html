@@ -103,33 +103,36 @@
     .ok{color:#77d977}.warn{color:#ffd36e}
 
     /* ====== Responsive ====== */
-    /* Tablets y pantallas medianas */
     @media (max-width: 1024px){
       .hero .inner{grid-template-columns:1fr;gap:18px}
       .hero-copy h2{font-size:48px}
       .item .ph{height:190px}
     }
-    /* Celulares */
     @media (max-width: 768px){
       .wrap{padding:0 14px}
+      .nav{flex-wrap:wrap;gap:8px}
+      .actions{width:100%;justify-content:flex-start;gap:8px}
+      .btn{padding:9px 12px}
+
       .brand img{width:48px;height:48px}
       .brand h1{font-size:32px}
-      .actions .btn{padding:9px 12px}
+
+      .hero .inner{grid-template-columns:1fr;gap:14px}
       .hero-copy h2{font-size:40px}
       .hero-copy p{font-size:14px}
+      .hero-visual img{max-height:240px;object-fit:contain}
+
       .grid{grid-template-columns:repeat(2,1fr)}
-      .item .ph{height:180px}
       .chip{padding:10px 12px;font-size:14px}
       .qty button{width:30px;height:30px}
       .qty input{width:44px}
       .cart{width:100vw}
     }
-    /* Teléfonos pequeños */
     @media (max-width: 560px){
       .grid{grid-template-columns:1fr}
       .hero-copy h2{font-size:34px}
       .tabs{gap:8px}
-      .row .btn.primary{flex:1} /* botón agregar ocupa más ancho */
+      .row .btn.primary{flex:1}
       .chip{flex:1;text-align:center}
       .item .ph{height:190px}
     }
