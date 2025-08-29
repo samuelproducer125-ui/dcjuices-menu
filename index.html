@@ -23,7 +23,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(11,11,11,.92);backdrop
 .brand img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--rojo)}
 .brand h1{font-family:"Bebas Neue";letter-spacing:.06em;font-size:38px;margin:0;line-height:1;color:var(--rojo)}
 .actions{display:flex;gap:10px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:10px;font-weight:700;border:1px solid #262626;background:#151515;color:var(--blanco);cursor:pointer;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:12px;font-weight:700;border:1px solid #262626;background:#151515;color:var(--blanco);cursor:pointer;white-space:nowrap}
 .btn.primary{background:var(--rojo);border-color:var(--rojo);color:#fff}
 .btn.primary:hover{background:var(--rojo-osc)}
 .cart-count{display:inline-flex;min-width:22px;justify-content:center;align-items:center;background:var(--rojo);color:#fff;border-radius:999px;padding:2px 6px;font-size:12px;margin-left:6px}
@@ -31,75 +31,88 @@ header{position:sticky;top:0;z-index:1000;background:rgba(11,11,11,.92);backdrop
 /* Hero */
 .hero .inner{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;padding:22px 0}
 .hero-copy h2{font-family:"Bebas Neue";font-size:54px;line-height:1;margin:0 0 8px;color:var(--rojo)}
-.hero-copy p{margin:0 0 16px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
-.tag{border:1px dashed var(--blanco);padding:6px 10px;border-radius:999px;font-size:12px;color:var(--blanco)}
+.hero-copy p{margin:0 0 16px;font-size:16px}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.tag{border:1px dashed var(--blanco);padding:8px 12px;border-radius:999px;font-size:13px;color:var(--blanco)}
 .marquee{white-space:nowrap;overflow:hidden;border-top:1px solid #1f1f1f;border-bottom:1px solid #1f1f1f;margin-top:12px}
 .marquee span{display:inline-block;padding:10px 0;animation:slide 18s linear infinite}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .card-photo{border:2px solid var(--rojo);border-radius:18px;overflow:hidden;box-shadow:0 10px 40px rgba(224,34,46,.25)}
 
-/* Tabs + selector móvil */
-.selector-movil{display:none;position:sticky;top:64px;z-index:900;background:#0b0b0b;border-bottom:1px solid #1f1f1f;padding:8px 0}
-.selector-movil .sel{width:100%;padding:10px 12px;border-radius:10px;border:1px solid #2b2b2b;background:#131313;color:#fff;font-weight:700}
+/* Selector móvil */
+.selector-movil{display:none;position:sticky;top:64px;z-index:900;background:#0b0b0b;border-bottom:1px solid #1f1f1f;padding:10px 0}
+.selector-movil .sel{width:100%;padding:12px 14px;border:1px solid #2b2b2b;background:#151515;color:#fff;border-radius:12px;font-weight:700}
+
+/* Tabs desktop/tablet */
 .tabs{margin:18px 0 12px;display:flex;gap:10px;flex-wrap:nowrap;overflow:auto;padding-bottom:6px}
 .tabs::-webkit-scrollbar{height:6px}
 .tabs::-webkit-scrollbar-thumb{background:#2b2b2b;border-radius:999px}
-.tab{padding:10px 14px;border-radius:999px;border:1px solid #2a2a2a;background:#222;color:var(--blanco);cursor:pointer;font-weight:700;flex:0 0 auto}
+.tab{padding:12px 16px;border-radius:999px;border:1px solid #2a2a2a;background:#222;color:var(--blanco);cursor:pointer;font-weight:700;flex:0 0 auto}
 .tab.active{background:var(--rojo);border-color:var(--rojo);color:#fff}
 
-/* Grid general (desktop/tablet) */
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+/* Grid por defecto (PC) */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 
-/* Tarjeta base (desktop/tablet) */
+/* Tarjeta (PC/Tablet) */
 .item{position:relative;border:1px solid var(--borde);border-radius:16px;overflow:hidden;background:#0f0f0f}
-.item .ph{height:180px;overflow:hidden;background:#0d0d0d}
+.item .ph{height:200px;overflow:hidden;background:#0d0d0d}
 .item .ph img{width:100%;height:100%;object-fit:cover}
-.item .info{padding:14px}
+.item .info{padding:16px}
 .item h3{margin:0;font-size:20px;letter-spacing:.02em;color:var(--rojo)}
-.desc{font-size:13px;margin:6px 0 12px}
-.controls{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
-.chip{padding:8px 12px;border-radius:999px;border:1px solid var(--borde);background:#121212;font-weight:700;color:var(--blanco);cursor:pointer}
+.desc{font-size:13px;margin:8px 0 12px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+.chip{padding:10px 12px;border-radius:999px;border:1px solid var(--borde);background:#121212;font-weight:700;color:var(--blanco);cursor:pointer}
 .chip.sel{background:var(--rojo);border-color:var(--rojo);color:#fff}
-.qty{display:inline-flex;align-items:center;border:1px solid var(--borde);border-radius:10px;overflow:hidden}
-.qty button{background:#151515;border:none;color:#fff;width:32px;height:32px;font-weight:800;cursor:pointer}
-.qty input{width:46px;text-align:center;background:#0f0f0f;border:none;color:#fff;font-weight:700}
-.price{font-weight:800;color:var(--rojo);margin-left:auto}
-.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--borde);border-radius:12px;overflow:hidden}
+.qty button{background:#151515;border:none;color:#fff;width:36px;height:36px;font-weight:800;cursor:pointer;font-size:18px}
+.qty input{width:56px;text-align:center;background:#0f0f0f;border:none;color:#fff;font-weight:800;font-size:16px}
+.price{font-weight:900;color:var(--rojo);margin-left:auto;font-size:18px}
+.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .pill{position:absolute;top:10px;left:10px;background:rgba(224,34,46,.95);color:white;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800}
 
-/* ---- Versión COMPACTA para MÓVIL (2 columnas) ---- */
+/* ======= RESPONSIVE ======= */
+/* Tablet */
+@media (max-width: 1024px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .hero .inner{grid-template-columns:1fr;gap:16px}
+  .item .ph{height:220px}
+}
+
+/* Móvil (PROFESIONAL: 1 columna, elementos grandes) */
 @media (max-width: 768px){
   .wrap{padding:0 14px}
   .nav{flex-wrap:wrap;gap:8px}
   .actions{width:100%;justify-content:flex-start;gap:8px}
-  .btn{padding:9px 12px}
-  .brand img{width:48px;height:48px}
-  .brand h1{font-size:32px}
+  .btn{padding:12px 14px;font-size:15px;border-radius:14px}
+  .brand img{width:52px;height:52px}
+  .brand h1{font-size:34px}
+
   .hero .inner{grid-template-columns:1fr;gap:12px}
-  .hero-copy h2{font-size:36px}
-  .hero-copy p{font-size:14px}
-  .hero-visual{display:none}      /* Oculta foto grande en móvil para aligerar */
+  .hero-copy h2{font-size:38px}
+  .hero-copy p{font-size:15px}
+  .hero-visual{display:none}
+
   .selector-movil{display:block}
-  .tabs{display:none}             /* Usamos dropdown en móvil */
-  .grid{grid-template-columns:repeat(2,1fr);gap:12px}
-  .item .ph{height:120px}
-  .item .info{padding:10px}
-  .item h3{font-size:16px}
-  .desc{display:none}             /* Oculta descripción larga en móvil */
-  .controls{display:none}         /* Oculta chips en móvil (se usan selects) */
-  .mobile-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
-  .mobile-controls .sel{width:100%;padding:8px 10px;border:1px solid #2b2b2b;background:#151515;color:#fff;border-radius:10px;font-weight:700}
-  .qty button{width:30px;height:30px}
-  .qty input{width:44px}
-  .row .btn.primary{flex:1}
-  .pill{transform:scale(.9)}
+  .tabs{display:none}
+
+  .grid{grid-template-columns:1fr;gap:14px}
+  .item{border-radius:18px}
+  .item .ph{height:260px}                 /* Imagen alta y vistosa */
+  .item .info{padding:16px}
+  .item h3{font-size:20px}
+  .desc{font-size:14px;opacity:.95}
+  .controls{display:none}                 /* En móvil usamos selects grandes */
+  .mobile-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+  .mobile-controls .sel{width:100%;padding:12px 14px;border:1px solid #2b2b2b;background:#151515;color:#fff;border-radius:12px;font-weight:800;font-size:15px}
+  .qty button{width:40px;height:40px;font-size:20px}
+  .qty input{width:64px;font-size:18px}
+  .price{font-size:20px}
+  .row .btn.primary{flex:1;padding:14px 16px;font-size:16px;border-radius:14px}
 }
 
 /* Extra pequeño */
 @media (max-width: 380px){
-  .grid{grid-template-columns:1fr}
-  .item .ph{height:150px}
+  .item .ph{height:240px}
 }
 
 /* Dock / Footer */
@@ -109,19 +122,19 @@ header{position:sticky;top:0;z-index:1000;background:rgba(11,11,11,.92);backdrop
 footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e6e6e6;font-size:14px}
 
 /* Carrito */
-.cart{position:fixed;top:0;right:0;height:100dvh;width:380px;max-width:95vw;background:#0f0f0f;border-left:1px solid #1f1f1f;transform:translateX(100%);transition:.3s;z-index:1100;display:flex;flex-direction:column}
+.cart{position:fixed;top:0;right:0;height:100dvh;width:420px;max-width:100vw;background:#0f0f0f;border-left:1px solid #1f1f1f;transform:translateX(100%);transition:.3s;z-index:1100;display:flex;flex-direction:column}
 .cart.open{transform:translateX(0)}
-.cart-h{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #1f1f1f;background:#111}
-.cart-b{flex:1;overflow:auto;padding:10px 12px;display:flex;flex-direction:column;gap:10px}
-.cart-i{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;border:1px solid var(--borde);border-radius:12px;padding:8px;background:#121212}
-.cart-i img{width:56px;height:56px;object-fit:cover;border-radius:8px}
-.cart-i h4{margin:0;color:var(--rojo);font-size:14px}
-.cart-i p{margin:2px 0 0 0;font-size:12px}
-.cart-f{border-top:1px solid #1f1f1f;padding:12px}
+.cart-h{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid #1f1f1f;background:#111;font-size:16px}
+.cart-b{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:12px}
+.cart-i{display:grid;grid-template-columns:72px 1fr auto;gap:12px;align-items:center;border:1px solid var(--borde);border-radius:14px;padding:10px;background:#121212}
+.cart-i img{width:72px;height:72px;object-fit:cover;border-radius:10px}
+.cart-i h4{margin:0;color:var(--rojo);font-size:16px}
+.cart-i p{margin:2px 0 0 0;font-size:13px}
+.cart-f{border-top:1px solid #1f1f1f;padding:14px}
 .cart-f .row{justify-content:space-between}
 .cart-empty{opacity:.8;text-align:center;padding:20px 0}
 .del{background:none;border:none;color:#fff;opacity:.8;cursor:pointer}
-.cart-btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;width:100%;padding:12px 14px;border-radius:10px;font-weight:800;border:1px solid transparent}
+.cart-btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;width:100%;padding:14px;border-radius:12px;font-weight:800;border:1px solid transparent}
 .cart-btn.wapp{background:var(--rojo);border-color:var(--rojo);color:#fff}
 .cart-btn.ghost{background:#151515;border-color:#2b2b2b;color:#fff}
 
@@ -133,10 +146,10 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
 .form{display:grid;gap:10px}
 .field{display:grid;gap:6px}
 .label{font-size:13px;opacity:.9}
-.input, .textarea{background:#111;border:1px solid #2b2b2b;border-radius:10px;padding:10px;color:var(--blanco)}
-.textarea{min-height:72px;resize:vertical}
+.input, .textarea{background:#111;border:1px solid #2b2b2b;border-radius:12px;padding:12px;color:var(--blanco);font-size:15px}
+.textarea{min-height:84px;resize:vertical}
 .row-end{display:flex;gap:10px;justify-content:flex-end;margin-top:8px}
-.note{font-size:12px;opacity:.85}
+.note{font-size:13px;opacity:.85}
 .ok{color:#77d977}.warn{color:#ffd36e}
 </style>
 </head>
@@ -198,95 +211,72 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
 
   <!-- ===== ESPECIALES ===== -->
   <section class="grid tab-pane" id="especiales">
-    <article class="item" data-id="borrachonto-175" data-name="Borrachonto 175" data-type="sizes"
-      data-price-16="15000" data-price-32="25000">
+    <!-- Cada card incluye chips (desktop) y selects (móvil) -->
+    <article class="item" data-id="borrachonto-175" data-name="Borrachonto 175" data-type="sizes" data-price-16="15000" data-price-32="25000">
       <span class="pill">Más vendido</span>
       <div class="ph"><img src="images/borrachonto-175.png" alt="Borrachonto 175" onerror="this.src='logo.png'"></div>
       <div class="info">
         <h3>Borrachonto 175</h3>
         <p class="desc">Borojó, chontaduro, Vita Fer, ginseng, cola granulada, miel, vino Sansón, vitacerebrina</p>
-
-        <!-- Chips (desktop) -->
         <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="32oz">32oz</span></div>
-        <!-- Selects (móvil) -->
         <div class="mobile-controls">
-          <select class="sel sel-size">
-            <option value="16oz" selected>16oz</option>
-            <option value="32oz">32oz</option>
-          </select>
-          <div></div>
+          <select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="32oz">32oz</option></select><div></div>
         </div>
-
         <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
       </div>
     </article>
 
-    <article class="item" data-id="hagalo-con-fe" data-name="Hágalo con fé" data-type="sizes"
-      data-price-16="15000" data-price-32="25000">
+    <article class="item" data-id="hagalo-con-fe" data-name="Hágalo con fé" data-type="sizes" data-price-16="15000" data-price-32="25000">
       <div class="ph"><img src="logo.png" alt="Hágalo con fé" onerror="this.src='logo.png'"></div>
       <div class="info">
         <h3>Hágalo con fé</h3>
         <p class="desc">Naranja, Milo, lechera, ginseng, Vita Fer, vitacerebrina</p>
         <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="32oz">32oz</span></div>
-        <div class="mobile-controls">
-          <select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="32oz">32oz</option></select><div></div>
-        </div>
+        <div class="mobile-controls"><select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="32oz">32oz</option></select><div></div></div>
         <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
       </div>
     </article>
 
-    <article class="item" data-id="ensalada-frutas" data-name="Ensalada de frutas" data-type="sizes"
-      data-price-16="15000" data-price-32="25000">
+    <article class="item" data-id="ensalada-frutas" data-name="Ensalada de frutas" data-type="sizes" data-price-16="15000" data-price-32="25000">
       <div class="ph"><img src="logo.png" alt="Ensalada de frutas" onerror="this.src='logo.png'"></div>
       <div class="info">
         <h3>Ensalada de frutas</h3>
         <p class="desc">Granola, kumis o yogurt, fruta picada</p>
         <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="32oz">32oz</span></div>
-        <div class="mobile-controls">
-          <select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="32oz">32oz</option></select><div></div>
-        </div>
+        <div class="mobile-controls"><select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="32oz">32oz</option></select><div></div></div>
         <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
       </div>
     </article>
 
-    <article class="item" data-id="batido-banano" data-name="Batido de banano + proteína" data-type="sizes"
-      data-price-16="15000" data-price-32="25000">
+    <article class="item" data-id="batido-banano" data-name="Batido de banano + proteína" data-type="sizes" data-price-16="15000" data-price-32="25000">
       <div class="ph"><img src="logo.png" alt="Batido de banano" onerror="this.src='logo.png'"></div>
       <div class="info">
         <h3>Batido de banano + proteína</h3>
         <p class="desc">Con colágeno y creatina</p>
         <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="32oz">32oz</span></div>
-        <div class="mobile-controls">
-          <select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="32oz">32oz</option></select><div></div>
-        </div>
+        <div class="mobile-controls"><select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="32oz">32oz</option></select><div></div></div>
         <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
       </div>
     </article>
 
-    <article class="item" data-id="batido-verde" data-name="Batido Verde" data-type="sizes"
-      data-price-16="15000" data-price-32="20000">
+    <article class="item" data-id="batido-verde" data-name="Batido Verde" data-type="sizes" data-price-16="15000" data-price-32="20000">
       <div class="ph"><img src="logo.png" alt="Batido Verde" onerror="this.src='logo.png'"></div>
       <div class="info">
         <h3>Batido Verde</h3>
         <p class="desc">Apio, piña, manzana verde, espinaca, perejil, jengibre, pepino y cidra</p>
         <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="32oz">32oz</span></div>
-        <div class="mobile-controls">
-          <select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="32oz">32oz</option></select><div></div>
-        </div>
+        <div class="mobile-controls"><select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="32oz">32oz</option></select><div></div></div>
         <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
       </div>
     </article>
 
-    <article class="item" data-id="batido-rojo" data-name="Batido Rojo" data-type="sizes"
-      data-price-16="15000" data-price-32="20000">
+    <article class="item" data-id="batido-rojo" data-name="Batido Rojo" data-type="sizes" data-price-16="15000" data-price-32="20000">
       <div class="ph"><img src="logo.png" alt="Batido Rojo" onerror="this.src='logo.png'"></div>
       <div class="info">
         <h3>Batido Rojo</h3>
         <p class="desc">Mora, fresa, jengibre, remolacha y rábano</p>
         <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="32oz">32oz</span></div>
-        <div class="mobile-controls">
-          <select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="32oz">32oz</option></select><div></div>
-        </div>
+        <div class="mobile-controls"><select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="32oz">32oz</option></select><div></div></div>
         <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
       </div>
     </article>
@@ -294,7 +284,6 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
 
   <!-- ===== JUGOS ===== -->
   <section class="grid tab-pane" id="jugos" style="display:none">
-    <!-- Naranja -->
     <article class="item" data-id="naranja" data-name="Jugo de naranja" data-type="naranja"
       data-price-9="3000" data-price-14="5000" data-price-16="7000" data-price-22="10000" data-price-32="14000">
       <div class="ph"><img src="images/naranja.png" alt="Naranja" onerror="this.src='logo.png'"></div>
@@ -303,20 +292,16 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
         <div class="controls"><span class="chip" data-size="9oz">9oz</span><span class="chip" data-size="14oz">14oz</span><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span></div>
         <div class="mobile-controls">
           <select class="sel sel-size">
-            <option value="9oz">9oz</option>
-            <option value="14oz">14oz</option>
-            <option value="16oz" selected>16oz</option>
-            <option value="22oz">22oz</option>
-            <option value="32oz">32oz</option>
-          </select>
-          <div></div>
+            <option value="9oz">9oz</option><option value="14oz">14oz</option>
+            <option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option>
+          </select><div></div>
         </div>
         <div class="row"><div class="qty"><button class="qminus">−</button><input class="qval" type="number" value="1" min="1"><button class="qplus">+</button></div><div class="price"></div><button class="btn primary add">Agregar</button></div>
       </div>
     </article>
 
-    <!-- Frutas con Agua/Leche -->
-    <!-- MANGO -->
+    <!-- Plantilla frutas -->
+    <!-- Repite para mango/lulo/maracuyá/piña/mora/guanábana/fresa/mandarina/tomate de árbol -->
     <article class="item fruit" data-id="mango" data-name="Mango" data-type="fruit"
       data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
       data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
@@ -331,13 +316,12 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
       </div>
     </article>
 
-    <!-- LULO -->
+    <!-- Lulo -->
     <article class="item fruit" data-id="lulo" data-name="Lulo" data-type="fruit"
       data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
       data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
       <div class="ph"><img src="images/lulo.png" alt="Lulo" onerror="this.src='logo.png'"></div>
       <div class="info"><h3>Lulo</h3>
-        <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
         <div class="mobile-controls">
           <select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option></select>
           <select class="sel sel-variant"><option value="agua" selected>Agua</option><option value="leche">Leche</option></select>
@@ -346,13 +330,12 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
       </div>
     </article>
 
-    <!-- MARACUYA -->
+    <!-- Maracuyá -->
     <article class="item fruit" data-id="maracuya" data-name="Maracuyá" data-type="fruit"
       data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
       data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
       <div class="ph"><img src="images/maracuya.png" alt="Maracuyá" onerror="this.src='logo.png'"></div>
       <div class="info"><h3>Maracuyá</h3>
-        <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
         <div class="mobile-controls">
           <select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option></select>
           <select class="sel sel-variant"><option value="agua" selected>Agua</option><option value="leche">Leche</option></select>
@@ -361,13 +344,12 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
       </div>
     </article>
 
-    <!-- PIÑA -->
+    <!-- Piña -->
     <article class="item fruit" data-id="pina" data-name="Piña" data-type="fruit"
       data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
       data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
       <div class="ph"><img src="images/pina.png" alt="Piña" onerror="this.src='logo.png'"></div>
       <div class="info"><h3>Piña</h3>
-        <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
         <div class="mobile-controls">
           <select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option></select>
           <select class="sel sel-variant"><option value="agua" selected>Agua</option><option value="leche">Leche</option></select>
@@ -376,13 +358,12 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
       </div>
     </article>
 
-    <!-- MORA -->
+    <!-- Mora -->
     <article class="item fruit" data-id="mora" data-name="Mora" data-type="fruit"
       data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
       data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
       <div class="ph"><img src="images/mora.png" alt="Mora" onerror="this.src='logo.png'"></div>
       <div class="info"><h3>Mora</h3>
-        <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
         <div class="mobile-controls">
           <select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option></select>
           <select class="sel sel-variant"><option value="agua" selected>Agua</option><option value="leche">Leche</option></select>
@@ -391,13 +372,12 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
       </div>
     </article>
 
-    <!-- GUANABANA -->
+    <!-- Guanábana -->
     <article class="item fruit" data-id="guanabana" data-name="Guanábana" data-type="fruit"
       data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
       data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
       <div class="ph"><img src="images/guanabana.png" alt="Guanábana" onerror="this.src='logo.png'"></div>
       <div class="info"><h3>Guanábana</h3>
-        <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
         <div class="mobile-controls">
           <select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option></select>
           <select class="sel sel-variant"><option value="agua" selected>Agua</option><option value="leche">Leche</option></select>
@@ -406,13 +386,12 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
       </div>
     </article>
 
-    <!-- FRESA -->
+    <!-- Fresa -->
     <article class="item fruit" data-id="fresa" data-name="Fresa" data-type="fruit"
       data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
       data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
       <div class="ph"><img src="images/fresa.png" alt="Fresa" onerror="this.src='logo.png'"></div>
       <div class="info"><h3>Fresa</h3>
-        <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
         <div class="mobile-controls">
           <select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option></select>
           <select class="sel sel-variant"><option value="agua" selected>Agua</option><option value="leche">Leche</option></select>
@@ -421,13 +400,12 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
       </div>
     </article>
 
-    <!-- MANDARINA -->
+    <!-- Mandarina -->
     <article class="item fruit" data-id="mandarina" data-name="Mandarina" data-type="fruit"
       data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
       data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
       <div class="ph"><img src="images/mandarina.png" alt="Mandarina" onerror="this.src='logo.png'"></div>
       <div class="info"><h3>Mandarina</h3>
-        <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
         <div class="mobile-controls">
           <select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option></select>
           <select class="sel sel-variant"><option value="agua" selected>Agua</option><option value="leche">Leche</option></select>
@@ -436,13 +414,12 @@ footer{border-top:1px solid #1f1f1f;margin-top:26px;padding:20px 0 40px;color:#e
       </div>
     </article>
 
-    <!-- TOMATE DE ÁRBOL -->
+    <!-- Tomate de Árbol -->
     <article class="item fruit" data-id="tomate-arbol" data-name="Tomate de Árbol" data-type="fruit"
       data-price-16-agua="5000" data-price-22-agua="10000" data-price-32-agua="18000"
       data-price-16-leche="8000" data-price-22-leche="12000" data-price-32-leche="20000">
       <div class="ph"><img src="images/tomate-de-arbol.png" alt="Tomate de Árbol" onerror="this.src='logo.png'"></div>
       <div class="info"><h3>Tomate de Árbol</h3>
-        <div class="controls"><span class="chip sel" data-size="16oz">16oz</span><span class="chip" data-size="22oz">22oz</span><span class="chip" data-size="32oz">32oz</span><span class="chip sel" data-variant="agua">Agua</span><span class="chip" data-variant="leche">Leche</span></div>
         <div class="mobile-controls">
           <select class="sel sel-size"><option value="16oz" selected>16oz</option><option value="22oz">22oz</option><option value="32oz">32oz</option></select>
           <select class="sel sel-variant"><option value="agua" selected>Agua</option><option value="leche">Leche</option></select>
@@ -552,11 +529,10 @@ const MAPS_LINK = "https://maps.app.goo.gl/eZRJsZCi2iLdFd2P7";
 const COP = n => (n||0).toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0});
 const enc = s => encodeURIComponent(s);
 
-/* Tabs desktop + selector móvil */
+/* Tabs + selector móvil */
 const tabs=document.querySelectorAll('.tab');
 const panes=document.querySelectorAll('.tab-pane');
 const catSelect=document.getElementById('catSelect');
-
 function showTab(id){
   tabs.forEach(x=>x.classList.toggle('active', x.dataset.tab===id));
   panes.forEach(p=>p.style.display = (p.id===id? 'grid':'none'));
@@ -574,15 +550,15 @@ function getCardPrice(card){
   const type = card.getAttribute('data-type');
   if(type==='simple'){ return parseInt(card.getAttribute('data-price'))||0; }
   if(type==='sizes' || type==='naranja'){
-    const s = card.querySelector('.chip.sel[data-size]') || card.querySelector('.chip[data-size]');
-    const size = s ? s.getAttribute('data-size') : (card.querySelector('.sel-size')?.value || '16oz');
+    const chip = card.querySelector('.chip.sel[data-size]');
+    const size = chip ? chip.getAttribute('data-size') : (card.querySelector('.sel-size')?.value || '16oz');
     return parseInt(card.getAttribute(`data-price-${size.replace('oz','')}`))||0;
   }
   if(type==='fruit'){
-    const s = card.querySelector('.chip.sel[data-size]') || card.querySelector('.chip[data-size]');
-    const v = card.querySelector('.chip.sel[data-variant]') || card.querySelector('.chip[data-variant]');
-    const size = s ? s.getAttribute('data-size') : (card.querySelector('.sel-size')?.value || '16oz');
-    const variant = v ? v.getAttribute('data-variant') : (card.querySelector('.sel-variant')?.value || 'agua');
+    const chipS = card.querySelector('.chip.sel[data-size]');
+    const chipV = card.querySelector('.chip.sel[data-variant]');
+    const size = chipS ? chipS.getAttribute('data-size') : (card.querySelector('.sel-size')?.value || '16oz');
+    const variant = chipV ? chipV.getAttribute('data-variant') : (card.querySelector('.sel-variant')?.value || 'agua');
     return parseInt(card.getAttribute(`data-price-${size.replace('oz','')}-${variant}`))||0;
   }
   return 0;
@@ -592,7 +568,7 @@ function updateCardPrice(card){
   if(p) p.textContent = COP(getCardPrice(card));
 }
 
-/* Inicializar chips y precios */
+/* Inicializa selección y precio */
 document.querySelectorAll('.item').forEach(card=>{
   const sz = card.querySelector('.chip[data-size].sel') || card.querySelector('.chip[data-size]');
   if(sz && !sz.classList.contains('sel')) sz.classList.add('sel');
@@ -602,7 +578,7 @@ document.querySelectorAll('.item').forEach(card=>{
   updateCardPrice(card);
 });
 
-/* Cambios por chips (desktop) */
+/* Chips desktop */
 document.addEventListener('click',(e)=>{
   if(e.target.classList.contains('chip')){
     const isSize = e.target.hasAttribute('data-size');
@@ -610,43 +586,31 @@ document.addEventListener('click',(e)=>{
     const box = e.target.closest('.info');
     box.querySelectorAll('.chip'+groupSel).forEach(c=>c.classList.remove('sel'));
     e.target.classList.add('sel');
-
-    /* Sincroniza selects móviles */
     const card = e.target.closest('.item');
     if(isSize && card.querySelector('.sel-size')) card.querySelector('.sel-size').value = e.target.getAttribute('data-size');
     if(!isSize && card.querySelector('.sel-variant')) card.querySelector('.sel-variant').value = e.target.getAttribute('data-variant');
-
     updateCardPrice(card);
   }
 });
 
-/* Cambios por selects (móvil) */
-document.querySelectorAll('.sel-size').forEach(s=>{
-  s.addEventListener('change',()=>{
-    const card = s.closest('.item');
-    const val = s.value;
-    const selChip = card.querySelector(`.chip[data-size="${val}"]`);
-    if(selChip){
-      card.querySelectorAll('.chip[data-size]').forEach(c=>c.classList.remove('sel'));
-      selChip.classList.add('sel');
+/* Selects móvil */
+document.addEventListener('change',(e)=>{
+  if(e.target.classList.contains('sel-size') || e.target.classList.contains('sel-variant')){
+    const card = e.target.closest('.item');
+    if(e.target.classList.contains('sel-size')){
+      const val = e.target.value;
+      const chip = card.querySelector(`.chip[data-size="${val}"]`);
+      if(chip){ card.querySelectorAll('.chip[data-size]').forEach(c=>c.classList.remove('sel')); chip.classList.add('sel'); }
+    }else{
+      const val = e.target.value;
+      const chip = card.querySelector(`.chip[data-variant="${val}"]`);
+      if(chip){ card.querySelectorAll('.chip[data-variant]').forEach(c=>c.classList.remove('sel')); chip.classList.add('sel'); }
     }
     updateCardPrice(card);
-  });
-});
-document.querySelectorAll('.sel-variant').forEach(s=>{
-  s.addEventListener('change',()=>{
-    const card = s.closest('.item');
-    const val = s.value;
-    const selChip = card.querySelector(`.chip[data-variant="${val}"]`);
-    if(selChip){
-      card.querySelectorAll('.chip[data-variant]').forEach(c=>c.classList.remove('sel'));
-      selChip.classList.add('sel');
-    }
-    updateCardPrice(card);
-  });
+  }
 });
 
-/* Cantidades +/- en tarjeta */
+/* Cantidades */
 document.querySelectorAll('.item').forEach(card=>{
   const minus=card.querySelector('.qminus'), plus=card.querySelector('.qplus'), input=card.querySelector('.qval');
   if(minus&&plus&&input){
@@ -663,7 +627,7 @@ const cartBody = document.getElementById('cartBody');
 const cartSubtotal = document.getElementById('cartSubtotal');
 const cartCount = document.getElementById('cartCount');
 const emptyBtn = document.getElementById('emptyBtn');
-const state = { items: [] }; // {id,name,size,variant,qty,unit,img}
+const state = { items: [] };
 const keyOf = it => [it.id,it.size||'',it.variant||''].join('|');
 
 function addToCart(it){ const k=keyOf(it); const f=state.items.find(x=>keyOf(x)===k); if(f){f.qty+=it.qty;} else {state.items.push(it);} renderCart(); }
@@ -694,7 +658,6 @@ function renderCart(){
   cartSubtotal.textContent = COP(subtotal);
   cartCount.textContent = state.items.reduce((s,x)=>s+x.qty,0);
 }
-
 cartBtn.addEventListener('click',()=>{ cart.classList.add('open'); cart.setAttribute('aria-hidden','false'); });
 cartClose.addEventListener('click',()=>{ cart.classList.remove('open'); cart.setAttribute('aria-hidden','true'); });
 emptyBtn.addEventListener('click',()=>{ state.items=[]; renderCart(); });
@@ -705,10 +668,8 @@ document.querySelectorAll('.item .add').forEach(btn=>{
     const card=btn.closest('.item'); const type=card.getAttribute('data-type'); const id=card.getAttribute('data-id');
     const name=card.getAttribute('data-name')||card.querySelector('h3').textContent.trim(); const img=(card.querySelector('img')||{}).src||'logo.png';
     const qty=Math.max(1, +(card.querySelector('.qval')?.value||1)); let size=null,variant=null,unit=0;
-
     if(type==='simple'){
-      unit=parseInt(card.getAttribute('data-price'))||0;
-      size=card.querySelector('.chip[data-size]')?.textContent||'Único';
+      unit=parseInt(card.getAttribute('data-price'))||0; size=card.querySelector('.chip[data-size]')?.textContent||'Único';
     } else if(type==='sizes' || type==='naranja'){
       const chip = card.querySelector('.chip.sel[data-size]');
       size = chip ? chip.getAttribute('data-size') : (card.querySelector('.sel-size')?.value || '16oz');
